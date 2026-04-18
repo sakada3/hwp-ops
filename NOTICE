@@ -1,0 +1,65 @@
+hwp-ops
+Copyright 2026 sakada3
+
+Licensed under the Apache License, Version 2.0 (the "License").
+You may not use this software except in compliance with the License.
+You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
+
+================================================================================
+Origin of the code
+================================================================================
+
+The initial codebase was fully authored by an AI agent
+(Anthropic Claude Opus 4.7, via Claude Code) as an experiment in
+end-to-end AI-generated Claude Code skills. No human wrote the code
+line-by-line; a human directed the research / planning / development /
+review loop executed by sub-agents.
+
+================================================================================
+Runtime dependencies
+================================================================================
+
+- olefile (Philippe Lagadec, BSD license)
+  https://github.com/decalage2/olefile
+  Used by scripts/hwp5_extract.py to read HWP5 OLE Compound File streams.
+
+================================================================================
+Public specifications used as implementation basis
+================================================================================
+
+- Hangul Word Processor 5.0 file format specification, revision 1.3
+  (Hancom Inc., 2018)
+  https://www.hancom.com/support/downloadCenter/hwpOwpml
+- KS X 6101 - Open Word-processor Markup Language (OWPML) / HWPX
+  Korean Agency for Technology and Standards.
+  https://standard.go.kr/
+
+================================================================================
+Inspiration and cross-reference (no source code is copied)
+================================================================================
+
+- python-hwpx (airmang) — https://github.com/airmang/python-hwpx
+  The idea that the <hp:linesegarray> rendering cache must be removed
+  after any text edit, and the general "label > direction" path syntax
+  for table navigation, were learned from this public implementation.
+  python-hwpx is released under a non-commercial license; none of its
+  source code is included, redistributed, or linked at runtime in this
+  project. All algorithms were re-implemented independently from the
+  OWPML specification.
+
+- hwpxlib / hwplib / hwp2hwpx (neolord0, Apache License 2.0)
+  https://github.com/neolord0/hwpxlib
+  Cross-referenced for OWPML element attribute interpretation.
+
+- Hancom Developer Forum (https://forum.developer.hancom.com)
+  Public Q&A, in particular on linesegarray rendering-cache behaviour,
+  was referenced for correctness.
+
+================================================================================
+Disclaimer
+================================================================================
+
+This project is not affiliated with, endorsed by, or sponsored by
+Hancom Inc. "한글 / HWP / HWPX / 한컴오피스" are trademarks of Hancom
+Inc. and are used here only for interoperability and identification
+purposes under nominative fair-use.
